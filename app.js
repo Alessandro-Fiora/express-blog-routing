@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
   res.send("Server del mio Blog");
 });
 
+// POSTS ROUTER
 app.use("/posts", postsRouter);
 
 app.listen(port, () => {
