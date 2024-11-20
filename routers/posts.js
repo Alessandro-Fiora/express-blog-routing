@@ -31,7 +31,8 @@ router.get("/", (req, res) => {
 // SHOW
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.json(`Dettagli del post ${id}`);
+  const post = posts.filter((post) => post.id === id);
+  res.json(post);
 });
 // STORE
 router.post("/", (req, res) => {
