@@ -51,7 +51,18 @@ router.patch("/:id", (req, res) => {
 // DESTROY
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.json(`Eliminazione del post ${id}`);
+  let toDeleteIndex;
+  const deleted = posts.find((post, index) => {
+    if (post.id === id) {
+      toDeleteIndex = index;
+      return true;
+    } else return false;
+  });
+  if (toDeleteIndex) posts.splice(toDeleteIndex, 1);
+  res.json({
+    deleted,
+    posts,
+  });
 });
 
 module.exports = router;
